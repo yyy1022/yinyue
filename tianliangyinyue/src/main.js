@@ -32,13 +32,17 @@ import {
 } from 'vant';
 
 Vue.use(Cell);
+
 // Vue.use(CellGroup);
 // import Vue from 'vue'
+
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
+// 默认找index.js
+import store from './store/index'
 Vue.use(VueAxios, axios)
 new Vue({
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

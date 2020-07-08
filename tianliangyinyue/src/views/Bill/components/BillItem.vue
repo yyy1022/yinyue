@@ -28,7 +28,7 @@ export default {
   },
   created() {
     getBillList(this.type, 3).then(res => {
-      console.log(res);
+      // console.log(res);
       this.list = res.data.song_list;
       this.billboard = res.data.billboard;
     });
@@ -48,14 +48,14 @@ export default {
       width: 100%;
       height: 100%;
     }
-    .list {
-      padding: 3px 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      span {
-        color: crimson;
-      }
+  }
+  .list {
+    padding: 3px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    span {
+      color: crimson;
     }
   }
   //   列表

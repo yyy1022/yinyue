@@ -31,10 +31,10 @@ const routes = [{
       {
         path: 'singer',
 
-        component: () => import('../views/Singer.vue'),
+        component: () => import('../views/Singer/Singer.vue'),
 
         meta: {
-          title: "更多音乐"
+          title: "歌手"
         }
       },
       {

@@ -2,9 +2,11 @@
   <div>
     <ul>
       <li v-for="item in list1" :key="item.song_id" class="music-bill-list">
-        <img :src="item.pic_big" alt />
+        <div class="imgBox">
+          <img :src="item.pic_big" alt />
+        </div>
 
-        <div>
+        <div class="rightBox">
           <p>{{item.title}}</p>
           <p>{{item.author}}</p>
         </div>
@@ -37,11 +39,23 @@ export default {
 </script>
 <style scoped lang="less">
 .music-bill-list {
-  div {
-    width: 220px;
-    height: 130px;
-    float: right;
+  display: flex;
+  .imgBox {
+    width: 100px;
+    flex-shrink: 0;
+    img {
+      width: 100%;
+    }
+    // height: 130px;
+    // float: right;
     // border: 1px solid black;
+  }
+  .rightBox {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 }
 </style>;
