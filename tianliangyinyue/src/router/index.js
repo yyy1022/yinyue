@@ -16,11 +16,14 @@ const routes = [{
     path: '/index',
 
     component: IndexLayout,
+
     children: [{
         path: '/',
 
         component: Index,
-      }, {
+      },
+
+      {
         path: 'bill',
 
         component: () => import('../views/Bill/Bill.vue'),
@@ -53,26 +56,39 @@ const routes = [{
           title: "搜索"
         }
       },
-      {
-        path: 'more/:type',
 
-        component: () => import('../views/MoreMusic.vue'),
+      {
+        path: '/singer-dtails/:tinguid',
+        name: "singer-dtails",
+        component: () => import('../views/SingerDetails'),
         meta: {
-          title: "更多音乐"
+          title: "歌手详情"
         }
+      },
+      {
+        path: "more/:type",
+        name: "more",
+        component: () => import('../views/MoreMusic'),
+        meta: {
+          title: '更多'
+        },
       },
     ],
 
   },
 
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+  {
+    path: '/music-play/:songId',
+    name: "musicPlay",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import('../views/MusicPlay/MusicPlay.vue'),
+    meta: {
+      title: "歌曲播放"
+    }
+  },
+
 ]
 
 const router = new VueRouter({

@@ -13,7 +13,11 @@ const store = new Vuex.Store({
             name: "你好啊1"
         },
         isLogin: true,
-        billList: []
+        billList: [],
+        // 播放进度
+        currentTime: 0,
+        // 获取时间
+        proccess: null
         // count: 0,
         // title: 'vuex中的title'
     },
@@ -26,7 +30,14 @@ const store = new Vuex.Store({
         },
         setBillList(state, payload) {
             state.billList = payload.billList
-        }
+        },
+        setCurrentTime(state, payload) {
+            state.currentTime = payload.currentTime
+        },
+        setProccess(state, payload) {
+            state.proccess = payload.proccess
+        },
+
     },
     actions: {
         setBillList(context, payload) {

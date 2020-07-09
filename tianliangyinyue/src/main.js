@@ -32,7 +32,22 @@ import {
 } from 'vant';
 
 Vue.use(Cell);
+import {
+  Icon
+} from 'vant';
 
+Vue.use(Icon);
+import {
+  Toast
+} from 'vant';
+
+Vue.use(Toast);
+import {
+  Dialog
+} from 'vant';
+
+// 全局注册
+Vue.use(Dialog);
 // Vue.use(CellGroup);
 // import Vue from 'vue'
 

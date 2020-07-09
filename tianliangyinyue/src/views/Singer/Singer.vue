@@ -1,6 +1,7 @@
 <template>
   <div>
     <SingerItem v-for="item in list" :key="item" :tinguid="item"></SingerItem>
+    <!-- <SingerItem v-for="item in list" :key="item" :tinguid="item"></SingerItem> -->
   </div>
 </template>
 <script>

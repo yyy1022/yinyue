@@ -35,7 +35,8 @@ export function getBillList(type, size = 6, offset = 0) {
         })
 
 }
-
+// /v1/restserver/ting?method=baidu.ting.artist.getSongList&limits=10&tinguid=${tinguid=
+// geshou
 export function getSingerList(tinguid) {
     const url = `/v1/restserver/ting?method=baidu.ting.artist.getInfo&tinguid=${tinguid}`;
     return request.get(url)
@@ -45,4 +46,46 @@ export function getSingerList(tinguid) {
                 // list: res
             }
         })
+}
+// 歌曲
+
+export function getSongInfo(songId) {
+    const url = `/v1/restserver/ting?method=baidu.ting.song.play&songid=${songId}`;
+    return request.get(url);
+}
+
+// http://musicapi.taihe.com/v1/restserver/ting?method=baidu.ting.song.play&songid=265715650
+
+// 歌词
+export function getLrc(lrcLink) {
+    const url = `/taihe-api/data/song/lrc?lrc_link=${lrcLink}`
+    return request.get(url);
+}
+
+// http://musicapi.taihe.com/v1/restserver/ting?method=baidu.ting.song.playAAC&songid=265715650&from=web
+// http: //music.taihe.com/data/song/lrc?lrc_link=http://qukufile2.qianqian.com/data2/lrc/7a07a153b8a9a9d918bbee676b7d4118/603149730/603149730.lrc
+// 搜索
+// http://musicapi.taihe.com/v1/restserver/ting?method=baidu.ting.search.catalogSug&query=杨
+export function getSearch(query) {
+    const url = `/v1/restserver/ting?method=baidu.ting.search.catalogSug&query=${query}`
+    return request.get(url)
+        .then(res => {
+            return {
+                ...res,
+                // list: res
+            }
+        })
+
+
+}
+// http://tingapi.ting.baidu.com/v1/restserver/ting?method=baidu.ting.artist.getSongList&limits=10&tinguid=2517
+// 获取歌手详情
+export function getSingerDetails(tinguid) {
+    const url = `/v1/restserver/ting?method=baidu.ting.artist.getSongList&limits=10&tinguid=${tinguid}`;
+    return request.get(url).then(res => {
+        return {
+            ...res,
+
+        }
+    })
 }

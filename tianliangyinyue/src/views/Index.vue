@@ -13,6 +13,7 @@
 import BillList from "../components/BillList";
 import MusicBill from "../components/MusicBill";
 import Swiper from "../components/Swiper";
+// import SingerDetails from "../views/SingerDetails";
 export default {
   name: "Index",
   components: {

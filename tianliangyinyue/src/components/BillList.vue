@@ -6,10 +6,16 @@
     </h3>
     <div>
       <ul class="bill-list">
-        <li v-for="item in list" :key="item.song_id">
+        <!-- <router-link v-for="item in list" :key="item.song_id" tag="li" :to="{name："MusicPlay",params:{item.song_id}}"> -->
+        <router-link
+          tag="li"
+          :to="{name:'musicPlay',params: {songId:item.song_id}}"
+          v-for="item in list"
+          :key="item.song_id"
+        >
           <img :src="item.pic_big" alt />
           <div>{{item.title}}</div>
-        </li>
+        </router-link>
       </ul>
     </div>
   </div>
@@ -46,7 +52,7 @@ export default {
     //     this.list = res.data.song_list;
     //   });
     getBillList(this.type, this.size).then(res => {
-      // console.log(res);
+      console.log(res);
       this.list = res.data.song_list;
     });
   }

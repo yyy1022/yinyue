@@ -1,11 +1,11 @@
 
 <template>
-  <div class="singer-content">
+  <router-link class="singer-content" :to="'/index/singer-dtails/'+list.ting_uid" tag="div">
     <div class="singer-box">
       <img :src="list.avatar_middle" alt />
     </div>
     <p class="text">{{list.name}}</p>
-  </div>
+  </router-link>
 </template>
 <script>
 import { getSingerList } from "../../../api/music-api.js";
