@@ -89,3 +89,16 @@ export function getSingerDetails(tinguid) {
         }
     })
 }
+
+
+// http://musicapi.taihe.com/v1/restserver/ting?method=baidu.ting.billboard.billList&type=1
+// 榜单
+export function getBillDetails(type) {
+    const url = `/v1/restserver/ting?method=baidu.ting.billboard.billList&type=${type}`;
+    return request.get(url).then(res => {
+        return {
+            ...res,
+
+        }
+    })
+}

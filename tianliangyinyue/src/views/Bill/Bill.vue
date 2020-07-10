@@ -1,6 +1,9 @@
 <template>
   <div>
-    <BillItem v-for="item in billTypeList" :type="item" :key="item"></BillItem>
+    <router-link v-for="item in billTypeList" :key="item" :to="'/bill-details/'+item">
+      <BillItem :type="item"></BillItem>
+    </router-link>
+
     <!-- <BillItem :type="1"></BillItem>
     <BillItem :type="11"></BillItem>
     <BillItem :type="12"></BillItem>

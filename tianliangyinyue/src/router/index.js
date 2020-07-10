@@ -1,100 +1,110 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 // import Bil from '../views/Home.vue'
 import IndexLayout from "../layout/IndexLayout";
-import Index from '../views/Index.vue';
-// import 
-Vue.use(VueRouter)
+import Index from "../views/Index.vue";
+// import
+Vue.use(VueRouter);
 
-const routes = [{
-    path: '/',
+const routes = [
+  {
+    path: "/",
 
-    redirect: "/index"
+    redirect: "/index",
   },
 
   {
-    path: '/index',
+    path: "/index",
 
     component: IndexLayout,
 
-    children: [{
-        path: '/',
+    children: [
+      {
+        path: "/",
 
         component: Index,
       },
 
       {
-        path: 'bill',
+        path: "bill",
 
-        component: () => import('../views/Bill/Bill.vue'),
+        component: () => import("../views/Bill/Bill.vue"),
         meta: {
-          title: "榜单"
-        }
+          title: "榜单",
+        },
       },
       {
-        path: 'singer',
+        path: "singer",
 
-        component: () => import('../views/Singer/Singer.vue'),
+        component: () => import("../views/Singer/Singer.vue"),
 
         meta: {
-          title: "歌手"
-        }
+          title: "歌手",
+        },
       },
       {
-        path: 'my',
+        path: "my",
 
-        component: () => import('../views/My.vue'),
+        component: () => import("../views/My.vue"),
         meta: {
-          title: "我的"
-        }
+          title: "我的",
+        },
       },
       {
-        path: 'search',
+        path: "search",
 
-        component: () => import('../views/Search.vue'),
+        component: () => import("../views/Search.vue"),
         meta: {
-          title: "搜索"
-        }
+          title: "搜索",
+        },
       },
 
       {
-        path: '/singer-dtails/:tinguid',
+        path: "singer-dtails/:tinguid",
         name: "singer-dtails",
-        component: () => import('../views/SingerDetails'),
+        component: () => import("../views/SingerDetails"),
         meta: {
-          title: "歌手详情"
-        }
+          title: "歌手详情",
+        },
       },
       {
         path: "more/:type",
         name: "more",
-        component: () => import('../views/MoreMusic'),
+        component: () => import("../views/MoreMusic"),
         meta: {
-          title: '更多'
+          title: "更多",
         },
       },
     ],
-
   },
 
   {
-    path: '/music-play/:songId',
+    path: "/music-play/:songId",
     name: "musicPlay",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import('../views/MusicPlay/MusicPlay.vue'),
+    component: () => import("../views/MusicPlay/MusicPlay.vue"),
     meta: {
-      title: "歌曲播放"
-    }
+      title: "歌曲播放",
+    },
   },
+  // BillDetails
+  {
+    path: "/bill-details/:type",
+    name: "BillDetails",
 
-]
+    component: () => import("../views/BillDetails"),
+    meta: {
+      title: "榜单详情",
+    },
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

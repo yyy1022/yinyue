@@ -4,7 +4,11 @@
   >
     <Header :title="songInfo.title"></Header>
     <div class="lyric-box">
-      <img :src="songInfo.pic_big" />
+      <img
+        :src="songInfo.pic_big"
+        class="img"
+        :style="isPlay?'animation-play-state: running':'animation-play-state: paused'"
+      />
     </div>
     <Lyric v-if="songInfo.lrclink" :lrc-link="songInfo.lrclink"></Lyric>
     <Player :file-link="bitrate.file_link"></Player>
@@ -32,7 +36,8 @@ export default {
       // 歌曲详情
       songInfo: {},
       // 歌曲的媒体信息
-      bitrate: {}
+      bitrate: {},
+      isPlay: false
     };
   },
   created() {
@@ -50,6 +55,12 @@ export default {
         currentTime: this.$refs.audio.currentTime
       });
     });
+    this.$refs.audio.addEventListener("play", () => {
+      this.isPlay = true;
+    }),
+      this.$refs.audio.addEventListener("pause", () => {
+        this.isPlay = false;
+      });
   },
   computed: {
     ...mapState(["proccess"])
@@ -70,7 +81,28 @@ export default {
   img {
     height: 180px;
     width: 180px;
-    border-radius: 10px;
+    border-radius: 50%;
+  }
+}
+.img {
+  animation: rotate 5s linear infinite;
+  // transform: rotate(360);
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
   }
 }
 .player-box {
